@@ -1,0 +1,22 @@
+<span class="form-title">Create new Column</span>
+<form class="form" [formGroup]="columnForm" (ngSubmit)="saveColumn()">
+    <div class="group" [class.has-error]="hasRequiredError(columnForm, 'title')" >
+      <input [(ngModel)]="newColumn.title" id="title" name="title" type="text" formControlName="title">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Title</label>
+      <div class="error"  *ngIf="hasRequiredError(columnForm, 'title')">  Title is required </div>
+    </div>
+
+    <div class="group" [class.has-error]="hasRequiredError(columnForm, 'title')">
+      <input [(ngModel)]="newColumn.order" name="order" type="number" formControlName="order">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Order</label>
+      <div class="error"  *ngIf="hasRequiredError(columnForm, 'order')">  Order is required </div>
+    </div>
+    <button type="submit"
+            [disabled]="columnForm.pristine || columnForm.invalid ">Save</button> &nbsp;
+    <button (click)="notifyParent()">Cancel</button>
+</form>
+

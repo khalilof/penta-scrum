@@ -1,0 +1,36 @@
+<span class="form-title">Create new Task:</span>
+    <form class="form">
+        <div class="group">      
+          <input [(ngModel)]="newTask.title" name="title" type="text">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Title</label>
+        </div>
+
+        <div class="group">      
+         <select #selectElem name="columnId" [(ngModel)]="newTask.columnId">
+            <option *ngFor="let status of cols" [value]="status.columnId"> {{status.title}}</option>
+          </select>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>columnId</label>
+        </div>
+
+        <div class="group">      
+          <input [(ngModel)]="newTask.assignee" name="assignee" type="text">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Assignee</label>
+        </div>
+
+        <div class="group">      
+          <input [(ngModel)]="newTask.epicId" name="epicId" type="number">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>epicId</label>
+        </div>
+      
+    </form>
+    
+    <button (click)="saveTask()">Save</button>
+    <button (click)="notifyParent();">Cancel</button>

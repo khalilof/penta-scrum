@@ -1,0 +1,32 @@
+<div class="header">
+  <button (click)="createNewColumn()">Add new Column+</button>
+  <button (click)="createNewTask()">Add new Task+</button>
+</div>
+<div class="group">
+    <input type="text"  (keyup)="assigneeFilterSubject$.next($event.target.value)">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Filter by Assignee</label>
+</div>
+
+<div class="board">
+  <penta-column [style.width]="widthOfColumn + '%'"
+                *ngFor="let col of cols"
+                title="{{col.title}}"
+                id="{{col.columnId}}">
+  </penta-column>
+</div>
+
+
+<penta-add-column class="box"
+                *ngIf="showCreateColumnForm"
+                [class.details]="showCreateColumnForm"
+                (update)="hideAddColumn($event)"></penta-add-column>
+
+<penta-add-task class="box"
+              *ngIf="showCreateTaskForm"
+              [class.details]="showCreateTaskForm"
+              (update)="hideAddTask($event)"></penta-add-task> 
+              <!-- if (showCreateTaskForm) then add class="details" -->
+
+<div *ngIf="showCreateColumnForm || showCreateTaskForm" id="overlay"></div>

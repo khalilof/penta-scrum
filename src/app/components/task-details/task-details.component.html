@@ -1,0 +1,9 @@
+
+<div class="hotdoc" *ngIf="task$ | async as task">
+  
+  <h1>Title: {{task.title}}</h1>
+  <h2>Ref: {{task.taskId}} </h2>
+  <h3>Assignee: {{task.assignee}}</h3>
+  <h3>Status: {{task.columnId}}</h3>
+
+</div>

@@ -1,0 +1,7 @@
+<div class="column-wrapper">
+  <h1 class="column-title">{{title}} </h1>
+
+  <penta-task *ngFor="let task of (tasks | assignee: assigneeFilter)"
+              [task]="task"
+              [@flyInOut]></penta-task>
+</div>
